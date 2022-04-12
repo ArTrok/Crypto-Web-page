@@ -4,6 +4,14 @@ import React, { useState, useEffect } from 'react';
 
 function ConverterComp() {
   const [currencyPrice, setCurrencyPrice] = useState('');
+  useEffect(() => {
+    first
+  
+    return () => {
+      second
+    }
+  }, []);
+  
   return (
     <div>ConverterComp</div>
   );
