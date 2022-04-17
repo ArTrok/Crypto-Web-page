@@ -6,6 +6,7 @@ function ConverterComp() {
   const [currencyPrice, setCurrencyPrice] = useState('');
   useEffect(async () => {
     const currencyData = await fetch(URL);
+    setCurrencyPrice(currencyData.json);
   }, []);
 
   return (
