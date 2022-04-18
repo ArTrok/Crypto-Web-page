@@ -10,7 +10,10 @@ function ConverterComp() {
   }, []);
 
   return (
-    <div>ConverterComp</div>
+    <div>
+      ConverterComp
+      <div>{currencyPrice}</div>
+    </div>
   );
 }
 
