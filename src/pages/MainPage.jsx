@@ -1,7 +1,12 @@
 import React from 'react';
+import Converter from './Converter';
 
 function MainPage() {
-  return <div>mainPage</div>;
+  return (
+    <div>
+      <Converter />
+    </div>
+  );
 }
 
 export default MainPage;

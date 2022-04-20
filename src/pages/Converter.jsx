@@ -1,8 +1,11 @@
 import React from 'react';
+import ConverterComp from '../components/ConverterComp';
 
 function Converter() {
   return (
-    <div>Converter</div>
+    <div>
+      <ConverterComp />
+    </div>
   );
 }
 
