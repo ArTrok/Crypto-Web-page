@@ -4,9 +4,13 @@ const URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
 function ConverterComp() {
   const [currencyPrice, setCurrencyPrice] = useState('');
-  useEffect(async () => {
+
+  async function callFetch () {
     const currencyData = await fetch(URL);
     setCurrencyPrice(currencyData.json);
+  }
+
+  useEffect(async () => {
   }, []);
 
   return (
