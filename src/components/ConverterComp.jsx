@@ -40,21 +40,44 @@ import React, { useState, useEffect } from 'react';
 const URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
 function ConverterComp() {
-  const [currencyPrice, setCurrencyPrice] = useState('');
-
+  const [currenciesData, setCurrenciesData] = useState({});
+  const [rate, setRate] = useState(1);
+  const [originalValue, setOriginalValue] = useState(0);
+  const [convertedValue, setConvertedValue] = useState(0);
   async function callFetch() {
     const currencyData = await fetch(URL);
-    setCurrencyPrice(await currencyData.json());
+    setCurrenciesData(await currencyData.json());
+    setRate(await currenciesData.bpi.USD.rate_float);
+    setConvertedValue(await originalValue / rate);
   }
 
   useEffect(async () => {
     await callFetch();
   }, []);
 
+  async function amountToConvert({ target }) {
+    setOriginalValue(await target.value);
+    setConvertedValue(await originalValue / rate);
+  }
+
   return (
     <div>
-      ConverterComp
-      <div>{currencyPrice.bpi.USD.rate_float}</div>
+      <div>
+        <label htmlFor="amountInput">
+          Amount to convert
+          <input name="amountInput" type="number" onChange={amountToConvert} />
+        </label>
+        <div>
+          Converted Value:
+          {' '}
+          {convertedValue}
+        </div>
+      </div>
+      <div>
+        Current Rate:
+        {' '}
+        {rate}
+      </div>
     </div>
   );
 }
